@@ -8,8 +8,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
   </head>
   <body>
+    <div  id="perloader" style="width: 100%; height: 100vh ; background-color: black; position: absolute; z-index: 100;"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
     <script src="./src/components/script.js"></script>
+  <script>
+    var loader = document.getElementById('perloader');
+    window.addEventListener('load' , function(){
+      loader.style.display='none'
+    } )
+  </script>
   </body>
 </html>
