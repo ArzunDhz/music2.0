@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+
+input:focus {
+	outline: none;
+  border: 1px solid rgb(90, 176, 182);
+}
+input
+{
+  text-indent: 10px;
+  background-color: transparent;
+  border: 1px solid white;
+}
+
+form{
+  margin: 0;
+  padding: 0;
+  
+}
+
+
+*{
+
+  margin: 0;
+  padding: 0;
+}
+
+
+.containerr
+{
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main_body_bg
+{
+background-image: url(./assets/bg.jpg);
+height: 100vh;
+width: 100%;
+background-size:cover;
+background-position: center;
+}
+
+.logo
+{
+  width:150px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 140px;
+  animation: lolo 7s linear infinite;
+  
+}
+
+.search
+{
+ transform: translateY(2vh)
+}
+
+.bubbles img
+{
+ width: 50px;
+ animation: bubble 7s linear infinite;
+
+}
+
+.bubbles{
+  width: 100%;
+  display: flex;
+  position: fixed;
+  bottom: -70px;
+  justify-content: space-around;
+}
+
+
+
+@keyframes lolo
+{
+  0%{
+    transform: translateY(2vh);
+  }
+  50%{
+    transform: translateY(-2vh);
+  }
+  100%{
+    transform: translateY(2vh);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+@keyframes bubble{
+
+  0%
+  {
+    transform: translateY(0);
+    opacity: 0;
+  }
+    50%
+  {
+
+    opacity: 1;
+  }
+  70%
+  {
+
+    opacity: 1;
+  }
+  100%
+  {
+    transform: translateY(-80vh);
+    opacity: 0;
+  }
+}
+
+.bubbles img:nth-child(1)
+{
+  animation-delay:2.2s;
+  width: 10px;
+  height: 10px;
+}
+
+.bubbles img:nth-child(2)
+{
+  animation-delay:3s;
+  width: 30px;
+  height: 30px;
+}
+
+.bubbles img:nth-child(3)
+{
+  animation-delay:2s;
+  width: 35px;
+}
+
+.bubbles img:nth-child(4)
+{
+  animation-delay:1.5s;
+  width: 10px;
+  height: 10px;
+}
+
+.bubbles img:nth-child(5)
+{
+  animation-delay:5s;
+  width: 15px;
+  height: 15px;
+}
+.bubbles img:nth-child(6)
+{
+  animation-delay:4s;
+  width: 23px;
+  height: 23px;
+
+}
+.bubbles img:nth-child(7)
+{
+  animation-delay:3s;
+  width: 27px;
+  height: 27px;
+}
+.bubbles img:nth-child(8)
+{
+  animation-delay:1s;
+  width: 15px;
+  height: 15px;
+}
+
+
+/***   spinner*/
