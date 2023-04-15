@@ -4,55 +4,59 @@ import Search from "../assets/search.png";
 import Wave from "../components/wave";
 import Download from "../assets/dwn.png";
 import Play from "../assets/play.png";
+import axios from "axios";
+
 const Input = () => {
   const [tittle, SetTitle] = useState("");
   const [link, SetLink] = useState("");
   const [query, SetQuery] = useState(false);
   const [loading, setLoading] = useState(false);
   const [playing, SetPlaying] = useState(false);
-  const [audio,setAudio] = useState(new Audio(''))
-  const [status,setStatus]= useState('')
-const [error , setError] = useState(true)
+  const [error, setError] = useState(true)
   const getDatafromApi = async (a) => {
     setLoading(true);
+      const options = {
+        method: 'GET',
+        url: 'https://youtube-mp3-download1.p.rapidapi.com/dl',
+        params: {id:a},
+        headers: {
+          'X-RapidAPI-Key': '607e26d4edmshb08ff0a4ce9c6d9p16368ajsnb4fbb80b1f9c',
+          'X-RapidAPI-Host': 'youtube-mp3-download1.p.rapidapi.com'
+        }
+      };
+      
+       await axios.request(options).then(function (response) {
 
-    const options = {
-      method: "GET",
-      headers: {
-        "X-RapidAPI-Key": "607e26d4edmshb08ff0a4ce9c6d9p16368ajsnb4fbb80b1f9c",
-        "X-RapidAPI-Host": "youtube-mp36.p.rapidapi.com",
-      },
-    };
-
-    await fetch("https://youtube-mp36.p.rapidapi.com/dl?id=" + a, options)
-      .then((response) => response.json())
-      .then((response) => {
-        SetTitle(response.title), SetLink(response.link) , setStatus(response.status) , console.log(response) ;
+          if(response.data.status==='ok')
+          {
+            SetTitle(response.data.title), SetLink(response.data.link),setError(false);
+          }
+        
       })
-      .catch((err) => console.error(err));
-    setLoading(false);
-    if(status==='ok')
-    {
-      setError(false)
-    }
-    else if(status==='fail')
-    {
-      setError(true)
-    }
- 
+
+      setLoading(false);
+
+
   };
+
+
+
+
+
 
   const handelSubmit = (e) => {
     e.preventDefault();
+    if(link.length>35)
     getDatafromApi(link.slice(32));
+   else
+    getDatafromApi(link.slice(17));
     e.target.input.value = "";
     SetQuery(true);
   };
 
   function startplaying() {
     SetPlaying(true);
-    setAudio (new Audio(link));
-    audio.play();
+    var audio = new Audio(link)
     audio.play();
   }
 
@@ -81,7 +85,9 @@ const [error , setError] = useState(true)
           </form>
         </div> 
         <div className="display_box  flex-col justify-center items-center">
-         {query ? (
+          {query? (<>
+              
+            {!error? (
            <>
              {loading ? (
                <>
@@ -111,8 +117,12 @@ const [error , setError] = useState(true)
              )}
            </>
          ) : (
-           <></>
+           <> <p className=" text-center text-[15px]  text-red-50">Invalid request</p></>
          )}
+          
+          </>):(<>
+          </>) }
+      
        </div>
 
       </div>
